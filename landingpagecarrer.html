@@ -1,0 +1,249 @@
+import React, { useState } from 'react';
+import { Mic, Users, Brain, MessageSquare, Monitor, Award, Clock, ChevronRight, Mail, Phone } from 'lucide-react';
+
+const PublicSpeakingLanding = () => {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefono: '',
+    messaggio: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Gestione del form
+  };
+
+  const modules = [
+    {
+      icon: Mic,
+      title: "Fondamenti del Public Speaking",
+      duration: "2 ore",
+      points: [
+        "Introduzione al public speaking",
+        "Superare la paura di parlare in pubblico",
+        "Capire il pubblico e le sue aspettative",
+        "Tecniche di respirazione e rilassamento"
+      ]
+    },
+    {
+      icon: Brain,
+      title: "Strutturare un Discorso Efficace",
+      duration: "3 ore",
+      points: [
+        "Creare una struttura chiara: introduzione, corpo e conclusione",
+        "Come usare storie e aneddoti per coinvolgere il pubblico",
+        "Sviluppare messaggi chiave che rimangano impressi"
+      ]
+    },
+    {
+      icon: Users,
+      title: "Tecniche di Voce e Linguaggio del Corpo",
+      duration: "3 ore",
+      points: [
+        "Uso efficace della voce: volume, tono, velocità",
+        "L'importanza del linguaggio del corpo e della postura",
+        "Gestire lo spazio e interagire con il pubblico"
+      ]
+    },
+    {
+      icon: MessageSquare,
+      title: "Gestire Q&A e Improvvisazione",
+      duration: "2 ore",
+      points: [
+        "Come rispondere a domande difficili o inaspettate",
+        "Tecniche di improvvisazione per situazioni impreviste",
+        "Mantenere la calma sotto pressione"
+      ]
+    },
+    {
+      icon: Monitor,
+      title: "Uso degli Strumenti Visivi e Digitali",
+      duration: "2 ore",
+      points: [
+        "Creare presentazioni efficaci (PowerPoint, Keynote, ecc.)",
+        "Quando e come usare i video o immagini",
+        "Tecniche per evitare di dipendere dagli strumenti visivi"
+      ]
+    },
+    {
+      icon: Award,
+      title: "Sessione Finale: Esercitazione Pratica",
+      duration: "3 ore",
+      points: [
+        "Simulazioni di presentazioni",
+        "Feedback costruttivo da parte del docente",
+        "Come continuare a migliorare nel tempo"
+      ]
+    }
+  ];
+
+  return (
+    <div className="w-full">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-600 to-blue-800">
+        <div className="max-w-6xl mx-auto px-4 text-center text-white">
+          <h1 className="text-5xl font-bold mb-6">Diventa un Oratore Straordinario</h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Corso completo di Public Speaking: dall'ansia da palcoscenico alla padronanza della comunicazione in pubblico
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100">
+              Iscriviti Ora
+            </button>
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10">
+              Scopri di più
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Panoramica del Corso */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Panoramica del Corso</h2>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center p-6">
+              <Clock className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">15 Ore Totali</h3>
+              <p className="text-gray-600">Corso intensivo diviso in 6 moduli</p>
+            </div>
+            <div className="text-center p-6">
+              <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Gruppi Ristretti</h3>
+              <p className="text-gray-600">Massima attenzione per ogni partecipante</p>
+            </div>
+            <div className="text-center p-6">
+              <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Attestato Finale</h3>
+              <p className="text-gray-600">Certificazione delle competenze acquisite</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Moduli del Corso */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Programma del Corso</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {modules.map((module, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <module.icon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg">{module.title}</h3>
+                    <p className="text-gray-600 text-sm">{module.duration}</p>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  {module.points.map((point, i) => (
+                    <li key={i} className="flex items-start">
+                      <ChevronRight className="w-4 h-4 text-blue-600 mt-1 mr-2 flex-shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form di Contatto */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Richiedi Informazioni</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-gray-700 mb-2">Nome e Cognome</label>
+                <input
+                  type="text"
+                  value={formData.nome}
+                  onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300"
+                  placeholder="Il tuo nome"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 mb-2">Email</label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300"
+                  placeholder="La tua email"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-gray-700 mb-2">Telefono</label>
+              <input
+                type="tel"
+                value={formData.telefono}
+                onChange={(e) => setFormData({...formData, telefono: e.target.value})}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300"
+                placeholder="Il tuo numero di telefono"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 mb-2">Messaggio</label>
+              <textarea
+                value={formData.messaggio}
+                onChange={(e) => setFormData({...formData, messaggio: e.target.value})}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 h-32"
+                placeholder="Scrivi qui le tue domande o richieste"
+              />
+            </div>
+            <button 
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium"
+            >
+              Invia Richiesta
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="font-bold text-xl mb-4">Corso di Public Speaking</h3>
+              <p className="text-gray-400">Trasforma la tua capacità di comunicare in pubblico</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Contatti</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center">
+                  <Mail className="w-4 h-4 mr-2" />
+                  info@corsopublicspeaking.it
+                </li>
+                <li className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2" />
+                  +39 123 456 7890
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Sede del Corso</h4>
+              <p className="text-gray-400">
+                Via del Corso, 123<br />
+                00186 Roma (RM)
+              </p>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Corso di Public Speaking. Tutti i diritti riservati.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default PublicSpeakingLanding;
